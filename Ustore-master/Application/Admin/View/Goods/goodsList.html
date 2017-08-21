@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="__ADMIN__/Css/bootstrap.css" />
+<link rel="stylesheet" type="text/css"
+	href="__ADMIN__/Css/bootstrap-responsive.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__/Css/style.css" />
+<script type="text/javascript" src="__ADMIN__/Css/jquery2.js"></script>
+<script type="text/javascript" src="__ADMIN__/Css/jquery2.sorted.js"></script>
+<script type="text/javascript" src="__ADMIN__/Css/bootstrap.js"></script>
+<script type="text/javascript" src="__ADMIN__/Css/ckform.js"></script>
+<script type="text/javascript" src="__ADMIN__/Css/common.js"></script>
+
+<style type="text/css">
+body {font-size: 20px;
+	padding-bottom: 40px;
+	background-color: #e9e7ef;
+}
+
+.sidebar-nav {
+	padding: 9px 0;
+}
+
+@media ( max-width : 980px) {
+	/* Enable use of floated navbar text */
+	.navbar-text.pull-right {
+		float: none;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+}
+</style>
+</head>
+<body>
+	<form class="form-inline definewidth m20" action="#" method="get">
+		 <font color="#777777"><strong>文档名称：</strong></font> <input type="text"
+			name="menuname" id="menuname" class="abc input-default"
+			placeholder="" value="">&nbsp;&nbsp;
+		<button type="submit" class="btn btn-primary">查询</button>
+		&nbsp;&nbsp;
+		<button type="button"  id="addnew">
+			<a href="documentAdd.html">添加文档 
+		</button>
+		</a>
+	</form>
+	<table class="table table-bordered table-hover definewidth m10">
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>商品名称</th>
+				<th>商品分类</th>
+				<th>所属品牌</th>
+				<th>商品价格</th>
+				<th>商品图片</th>
+				<th>管理菜单</th>
+			</tr>
+		</thead>
+		<foreach name='goods_list' item='v'>
+		<tr>
+			<td>{$v.goods_id}</td>
+			<td>{$v.goods_name}</td>
+			<foreach name='cate_list' item='vo'>
+			<if condition="$vo.cate_id eq $v.goods_cateid ">
+				<td>{$vo.cate_name}</td>
+			</if>
+			<if condition="$vo.cate_id eq $v.goods_brandid ">
+				<td>{$vo.cate_name}</td>
+			</if>					
+			</foreach>
+			
+			<td>{$v.goods_price}</td>
+			<td><img src="{$v.goods_small_pic|ltrim='.'}" alt='暂无此图'></td>
+			<td>
+				<a href='{:U("photos")}'><button>商品图片管理</button></a>
+				<a href=""><button>删除</button></a>
+			</td>
+		</tr>
+		</foreach>
+		
+
+
+	</table>
+
+</body>
+</html>

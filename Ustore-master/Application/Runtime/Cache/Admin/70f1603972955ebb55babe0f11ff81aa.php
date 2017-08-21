@@ -1,0 +1,87 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/Public/Admin/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/Public/Admin/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/Public/Admin/Css/style.css" />
+    <script type="text/javascript" src="/Public/Admin/js/jquery2.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/jquery2.sorted.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/ckform.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/common.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/jquerypicture.js"></script>
+    
+    <style type="text/css">
+        body {font-size: 20px;
+            padding-bottom: 40px;
+            background-color:#e9e7ef;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+        select{
+            height:30px;
+        }
+        input[type="text"]{
+            height:30px;
+        }
+        tr{
+            
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body><br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<font color="#777777"><strong>添加权限：</strong></font> 
+<form action="" method="post" class="definewidth m20" enctype="multipart/form-data">
+<table style="margin-left:10px;margin-top:3px;">
+    <tr>
+         <td>父级权限：</td>
+         <td>
+             <select name='auth_pid'>
+             <option value="0">顶级分类</option>               
+                <?php if(is_array($auth_list)): foreach($auth_list as $key=>$v): ?><option value="<?php echo ($v["auth_id"]); ?>}"><?php echo ($v["auth_name"]); ?></option><?php endforeach; endif; ?>
+             </select>
+         </td>
+    </tr>
+    <tr>
+         <td>权限名称：</td>
+		 <td><input type="text" name="auth_name" placeholder='请输入权限名称'/></td>
+    </tr>
+	<tr>
+         <td>控制器名称：</td>
+         <td><input type="text" name="auth_c" placeholder='请输入控制器名称'/></td>
+    </tr>
+	<tr>
+         <td>方法名称：</td>
+         <td><input type="text" name="auth_a" placeholder='请输入方法名称'/></td>
+    </tr>
+    <tr>
+        <td>是否显示:</td>
+        <td>
+            <input type="radio" name="auth_show" value='1'>显示
+            <input type="radio" name="auth_show" value='0'>不显示
+        </td>
+    </tr>
+    <tr>
+       <td colspan="2">
+            <button style="margin-left:5px;"type="submit" class="btn btn-primary" type="button"  >保&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp存</button> &nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid"><a href="classQuery.html"> 返回列表</a></button>
+        </td>
+    </tr>
+</table>
+</form>
+
+</body>
+</html>

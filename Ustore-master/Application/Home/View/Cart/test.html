@@ -1,0 +1,72 @@
+{__NOLAYOUT__}
+<layout name='mlayout' /> 
+<style type="text/css">
+  .goodspic{
+    width: 100px;
+  }
+</style>    
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row col-md-10 col-md-offset-1">
+            <!--评论面板-->                               
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">商品评论</h3>
+                </div>
+              <div class="panel-body">
+              <table class='col-md-6'>
+              <tr>
+                <th>商品</th>
+                <th>详情</th>
+                <th>价格</th>
+              </tr>
+                <tr>
+                  <td><img class='goodspic' src="__HOME__/img/product-thumb-1.jpg"><br>iPhone6</td>
+                  <td>内存:2g 颜色:金色</td>
+                  <td>5999</td>
+                </tr>
+              </table>
+              <form action="{:U('comment')}" method="post">
+                <div class='col-md-5 col-md-offset-1'>
+                  <div id='star'>&nbsp;<i class='fa fa-star-o'></i>&nbsp;<i class='fa fa-star-o'></i>&nbsp;<i class='fa fa-star-o'></i>&nbsp;<i class='fa fa-star-o'></i>&nbsp;<i class='fa fa-star-o'></i>&nbsp;</div>
+                  <input type="hidden" name="star" value='0'>
+                  <input type="hidden" name="goodsid" value='0'>
+                  <textarea cols='40' rows="3"></textarea>
+                </div>
+              </form>
+              </div>
+            </div>
+             <div align="right"><a href="javascript:void(0)" class="button button-3d button-primary button-rounded">提交评论</a>
+             </div>
+      <!--评论面板end-->
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+  $('#star>i').click(function(){
+    $('#star>i').prop('class','fa fa-star-o');
+      var index=$(this).index();
+      $("[name='star']").val(index);
+      for(var i=0;i<=index;i++){
+        $('#star>i').eq(i).removeClass('fa-star-o');
+        $('#star>i').eq(i).addClass('fa-star');
+      }
+  })
+  $("a:contains('提交评论')").click(function(){
+    $('form').submit();
+  })
+</script>
